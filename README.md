@@ -332,5 +332,12 @@ playlist_url = "https://open.spotify.com/playlist/44PchuaQvrJhnoUp60qaOo"
 
 Great!, we have been able to create a Spotify playlist using Terraform!.
 
+References
+
+HashiCorp (2021a) Create a Spotify Playlist with Terraform | Terraform - HashiCorp Learn. Available at: https://learn.hashicorp.com/tutorials/terraform/spotify-playlist (Accessed: 18 May 2022).
+HashiCorp (2021b) hashicorp/learn-terraform-spotify: Create a playlist on Spotify by writing it as a Terraform configuration. Available at: https://github.com/hashicorp/learn-terraform-spotify (Accessed: 18 May 2022).
+
+
+
 
 
