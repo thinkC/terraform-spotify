@@ -1,17 +1,15 @@
-# terraform-spotify
-creating spotify playlist using terraform. This is inspired from the hashicorp website . You can see details of the tutorial here  https://learn.hashicorp.com/tutorials/terraform/spotify-playlist
-
+# Create Spotify playlist using Terraform
 
 This tutorial is inspired from the [Create a Spotify Playlist with Terraform](https://learn.hashicorp.com/tutorials/terraform/spotify-playlist) website.
 
-I will be creating a spotify playlist using terraform, this list numbers of tracks and also creating a playlist by the song ID or song URL.
+I will be creating a spotify playlist using terraform. Playlist will be created by searching for the artist name and song ID.
 
-In this tutorial there following prequisite are required:
+In this tutorial the following prerequisites are required:
 * Terraform version 1.0 +
 * Docker Desktop
 * Spotify account with developer access.
 
-I have already installed terraform and Docker desktop. To check the version of terraform and docker deskto after installation, do the following:
+We will need to install terraform and docker desktop. I have already installed both terraform and Docker desktop. To check the version of terraform and docker deskto after installation, do the following:
 
 ```bash
 terraform --version
@@ -36,13 +34,13 @@ output
 Docker version 20.10.7, build f0df350
 ```
 ## Create Spotify developer app
-Next I created the Spotify developer app. This will allow me to use Terraform with Spotify and to run the Spotify authorization server.
+Next we will need to created the Spotify developer app. This will allow us to use Terraform with Spotify and to run the Spotify authorization server.
 
 Click on the link to sign up for a free account [here](https://developer.spotify.com/dashboard/login).
 
 ![create spotify dev account](./img/img1.PNG)
 
-### account creation
+## Account creation
 ![create spotify dev account](./img/img2.PNG)
 
 
@@ -78,9 +76,9 @@ Next we will now setup the authorization server that will allow Terraform to int
 ![terraform-spotify](./img/terraform-spotify.PNG)
 **image from https://learn.hashicorp.com/**
 
-Next, we set the redirect URI as an environment variable which instruct the autjorization proxy server to our Spotify access token on port `27228`.
+Next, we set the redirect URI as an environment variable which instruct the authorization proxy server to grant our Spotify access token on port `27228`.
 
-Next we run the following on our terminal
+Next we run the following on our terminal. Here I am using git bash.
 
 ```bash
 export SPOTIFY_CLIENT_REDIRECT_URI=http://localhost:27228/spotify_callback
@@ -108,7 +106,7 @@ docker run --rm -it -p 27228:27228 --env-file ./.env ghcr.io/conradludgate/spoti
 
 ![run docker](./img/img11.PNG)
 
-We will need to copy the APIKey because we will need it ...
+We will need to copy the APIKey because we will need it assign it as a variable in the terraform.tfvars file.
 Next we copy the Auth URL and browse, on authenticating the server will display `Authentication Successful`. The server will be left running.
 
 ## Clone example repository
@@ -169,7 +167,9 @@ commands will detect it and remind you to do so if necessary.
 
 ## Update the main.tf file
 
-### Create a playlist by searching for the Song ID
+## Create a playlist by the Song ID
+Next we update the main.tf file so that we can create a Spotify playlist by songs IDs. 
+
 Below script searches two songs by there IDs.
 
 ```bash
@@ -264,7 +264,8 @@ Below shows the
 ![songs_byID](./img/terraform-byID.PNG)
 
 
-### Create a playlist by searching for the Song Artist
+## Create a playlist by Song Artist name
+Next, we create a Spotify playlist by using the Artist name.
 Below script searches two songs by there Artist.
 
 ```bash
@@ -288,12 +289,6 @@ data "spotify_search_track" "by_artist" {
   
 }
 
-
-
-
-
-
-
 resource "spotify_playlist" "playlist" {
   name        = "Tori Kelly playlist"
   description = "This playlist was created by Tunde Oyewo using Terraform"
@@ -314,11 +309,28 @@ resource "spotify_playlist" "playlist" {
 
 
 ```
+Next we run below: 
 
+```bash
+terraform apply -auto-approve
+```
+output
+
+```bash
+spotify_playlist.playlist: Refreshing state... [id=44PchuaQvrJhnoUp60qaOo]
+spotify_playlist.playlist: Modifying... [id=44PchuaQvrJhnoUp60qaOo]
+spotify_playlist.playlist: Modifications complete after 0s [id=44PchuaQvrJhnoUp60qaOo]
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+
+Outputs:
+
+playlist_url = "https://open.spotify.com/playlist/44PchuaQvrJhnoUp60qaOo"
+```
 ![songs_byArtisr](./img/terraform-byArtist.PNG)
 
 
-Great!, we have been able to create a Spotify playlist using Terraform!
+Great!, we have been able to create a Spotify playlist using Terraform!.
 
 
 
