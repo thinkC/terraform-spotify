@@ -34,7 +34,7 @@ output
 Docker version 20.10.7, build f0df350
 ```
 ## Create Spotify developer app
-Next we will need to created the Spotify developer app. This will allow us to use Terraform with Spotify and to run the Spotify authorization server.
+Next we will need to create the Spotify developer app. This will allow us to use Terraform with Spotify and to run the Spotify authorization server.
 
 Click on the link to sign up for a free account [here](https://developer.spotify.com/dashboard/login).
 
