@@ -9,7 +9,7 @@ In this tutorial the following prerequisites are required:
 * Docker Desktop
 * Spotify account with developer access.
 
-We will need to install terraform and docker desktop. I have already installed both terraform and Docker desktop. To check the version of terraform and docker deskto after installation, do the following:
+We will need to install terraform and docker desktop. I have already installed both terraform and Docker desktop. To check the version of terraform and docker desktop after installation, do the following:
 
 ```bash
 terraform --version
@@ -71,7 +71,7 @@ http://localhost:27228/spotify_callback
 
 ## Run authorization server
 
-Next we will now setup the authorization server that will allow Terraform to interact with spofify.
+Next we will now setup the authorization server that will allow Terraform to interact with spotify.
 
 ![terraform-spotify](./img/terraform-spotify.PNG)
 **image from https://learn.hashicorp.com/**
@@ -258,7 +258,7 @@ Outputs:
 
 playlist_url = "https://open.spotify.com/playlist/44PchuaQvrJhnoUp60qaOo"
 ```
-Next we click on the playlist_url and open the spotify playlist.
+Next we click on the _playlist_url_ and open the spotify playlist.
 
 Below shows the
 ![songs_byID](./img/terraform-byID.PNG)
@@ -266,7 +266,7 @@ Below shows the
 
 ## Create a playlist by Song Artist name
 Next, we create a Spotify playlist by using the Artist name.
-Below script searches two songs by there Artist.
+Below script searches two songs by their Artist.
 
 ```bash
 terraform {
