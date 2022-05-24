@@ -1,3 +1,4 @@
+#Get provider
 terraform {
   required_providers {
     spotify = {
@@ -7,12 +8,13 @@ terraform {
   }
 }
 
+#Get spotify api key
 provider "spotify" {
   api_key = var.spotify_api_key
 }
 
 
-
+# Create playlist by artist
 data "spotify_search_track" "by_artist" {
   artist = "Tori Kelly"
   #  album = "Jolene"
@@ -20,11 +22,7 @@ data "spotify_search_track" "by_artist" {
 }
 
 
-
-
-
-
-
+#Get playlist tracks
 resource "spotify_playlist" "playlist" {
   name        = "Tori Kelly playlist"
   description = "This playlist was created by Tunde Oyewo using Terraform"
@@ -44,7 +42,6 @@ resource "spotify_playlist" "playlist" {
 }
 
 # Below creates playlist by ID
-# # Optional: Find song by ID
 # data "spotify_track" "Thank_You_Lord_Live_by_id" {
 #   spotify_id = "6tzwFtw4AHo2tCexPGMzUN"
 # }
